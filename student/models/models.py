@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from multiprocessing.reduction import duplicate
+# from multiprocessing.reduction import duplicate
 
 from odoo import fields, models, api
 import time
@@ -56,17 +56,17 @@ class Student(models.Model):
     _name = "student.student"
     _description = "Student"
 
-    def duplicate_record(self):
-        print(self)
-        duplicate_record = self.copy()
-        print(duplicate_record)
-
-    @api.returns("self",lambda value: value.id)
-    def copy(self,default=None):
-        print(self)
-        print(default)
-        rtn = super(Student, self).copy(default)
-        print(rtn)
+    # def duplicate_record(self):
+    #     print(self)
+    #     duplicate_record = self.copy()
+    #     print(duplicate_record)
+    #
+    # @api.returns("self",lambda value: value.id)
+    # def copy(self,default=None):
+    #     print(self)
+    #     print(default)
+    #     rtn = super(Student, self).copy(default)
+    #     print(rtn)
 
     name = fields.Char(string="Name")
     name1 = fields.Char(string="Name1")
