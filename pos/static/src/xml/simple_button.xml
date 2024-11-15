@@ -1,0 +1,5 @@
+<data inherit_id="point_of_sale.Buttons" noupdate="1">
+    <xpath expr="//div[@class='control-buttons']" position="inside">
+        <button type="button" class="btn btn-primary custom-button">Simple Button</button>
+    </xpath>
+</data>

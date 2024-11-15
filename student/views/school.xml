@@ -1,0 +1,54 @@
+<odoo>
+    <record id="school_school_list_view" model="ir.ui.view">
+        <field name="name">school.school.list.view</field>
+        <field name="model">school.school</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="id"/>
+                <field name="name"/>
+                <field name="student_list"/>
+                <field name="number"/>
+                <field name="amount"/>
+                <field name="currency_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="school_school_form_view" model="ir.ui.view">
+        <field name="name">school.school.form.view</field>
+        <field name="model">school.school</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="amount"/>
+                        <field name="name"/>
+                        <field name="number"/>
+                        <field name="student_list"/>
+                        <field name="ref_field_id"/>
+                        <field name="invoice_id"/>
+                        <field name="invoice_user_id"/>
+                        <field name="invoice_date"/>
+                        <field name="binary_fields" widget="many2many_binary"/>
+                        <field name="binary_field" filename="binary_filename"/>
+                        <field name="binary_filename" invisible="1"/>
+                    </group>
+                    <group>
+                        <field name="image" widget="image"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="school_school_action" model="ir.actions.act_window">
+        <field name="name">Schools</field>
+        <field name="res_model">school.school</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="school_school_list_view"/>
+    </record>
+
+    <menuitem id="menu_student_root" name="Student" sequence="1"/>
+    <menuitem id="menu_student_management" name="Manage Student" parent="menu_student_root" sequence="10"/>
+    <menuitem id="menu_student_list" name="School List" parent="menu_student_management" action="school_school_action" sequence="20"/>
+</odoo>
