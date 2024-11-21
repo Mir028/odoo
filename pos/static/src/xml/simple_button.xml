@@ -1,5 +1,13 @@
-<data inherit_id="point_of_sale.Buttons" noupdate="1">
-    <xpath expr="//div[@class='control-buttons']" position="inside">
-        <button type="button" class="btn btn-primary custom-button">Simple Button</button>
-    </xpath>
-</data>
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="PaymentScreenSampleButton" t-inherit="point_of_sale.PaymentScreenButtons" t-inherit-mode="extension">
+        <!-- Add a Sample Button to the payment screen -->
+        <xpath expr="//div[hasclass('payment-buttons')]" position="inside">
+            <button class="button js_sample_button btn btn-light py-3 text-start rounded-0 border-bottom"
+                t-on-click="onSampleButtonClick">
+                <i class="fa fa-sticky-note"/>
+                Sample Button
+            </button>
+        </xpath>
+    </t>
+</templates>

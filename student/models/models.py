@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+    # -*- coding: utf-8 -*-
 # from multiprocessing.reduction import duplicate
 
 from odoo import fields, models, api
