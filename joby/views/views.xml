@@ -5,7 +5,7 @@
         <field name="inherit_id" ref="product.product_template_only_form_view"/>
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
-                <button name="button_do_stuff"
+                <button name="button_update_stuff"
                         string="Update product"
                         type="object"
                         class="oe_highlight"

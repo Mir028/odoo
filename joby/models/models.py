@@ -1,28 +1,21 @@
 # -*- coding: utf-8 -*-
-from itertools import product
-
-from attr.validators import instance_of
 from odoo import models, fields, api
-from odoo.addons.test_convert.tests.test_env import field
 from odoo.exceptions import ValidationError
-from odoo.release import product_name
 
 
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
-    def button_do_stuff(self):
+    def button_update_stuff(self):
         tax = self.tax_19()
         supplier = [(4, tax.id)]
 
-        product = self.env['product.template'].browse(self.id)
-        update = f"{product.name} Updated "
+        update = f"{self.name} Updated "
 
         values = {"name": update + str(fields.Datetime.now()),
                   "description_sale" : "This is the description after the job " + str(fields.Datetime.now()),
                   "list_price": 10.1,
                   "taxes_id": supplier,
-                  "supplier_taxes_id": supplier,
                   }
 
         self.with_delay().update_product_details(values)
