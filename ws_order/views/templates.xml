@@ -1,0 +1,41 @@
+<odoo>
+    <data>
+        <template id="report_sale_order">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <div class="page">
+                        <h2>Sales Order Report for <t t-esc="doc.name"/></h2>
+                        <p><strong>Customer: </strong> <t t-esc="doc.partner_id.name"/></p>
+                        <p><strong>Order Date: </strong> <t t-esc="doc.date_order"/></p>
+                        <p><strong>Total Amount: </strong> <t t-esc="doc.amount_total"/></p>
+                        <t t-if="doc.amount_total &lt; 5000">
+                            Small order
+                        </t>
+                        <t t-elif="doc.amount_total &lt; 15000">
+                            Middium order
+                        </t>
+                        <t t-else="">
+                            Large order
+                        </t>
+                        <p><strong>Total Quantity: </strong> <t t-esc="sum(line.product_uom_qty for line in doc.order_line)"/> </p>
+                        <p><strong>The largest product quantity: </strong>
+                            <t t-set="biggest_product" t-value="max(doc.order_line, key=lambda line: line.product_uom_qty)"/>
+                            <t t-esc="biggest_product.product_id.name"/>
+                            (<t t-esc="biggest_product.product_uom_qty"/>)
+                        </p>
+
+                    </div>
+                </t>
+            </t>
+        </template>
+
+        <record id="action_sale_order_report_pdf" model="ir.actions.report">
+            <field name="name">Sales Order Report</field>
+            <field name="model">sale.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">ws_order.report_sale_order</field>
+            <field name="report_file">ws_order.report_sale_order</field>
+            <field name="print_report_name">'Sales_Order_Report'</field>
+        </record>
+    </data>
+</odoo>

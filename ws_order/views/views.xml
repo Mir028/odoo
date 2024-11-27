@@ -1,0 +1,17 @@
+<odoo>
+  <data>
+    <record id="view_order_form_inherits" model="ir.ui.view">
+      <field name="name">order.form.inherits</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_order_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//header" position="inside">
+          <button name="generate_sale_report"
+                  type="object"
+                  string="Generate Report"
+                  class="oe_highlight"/>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

@@ -21,7 +21,7 @@
                                     Middium product
                                 </t>
                                 <t t-else="">
-                                    High <product></product>
+                                    High product
                                 </t>
                             </p>
                             <p><strong>Category: </strong> <t t-esc="doc.categ_id.name"/></p>
