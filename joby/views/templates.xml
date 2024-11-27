@@ -5,13 +5,28 @@
                 <t t-foreach="docs" t-as="doc">
                     <div class="page">
                         <h2>Product Report for <t t-esc="doc.name"/></h2>
-                        <table class="table table-bordered">
-                            <tr>
-                                <td><strong>Description sale: </strong> <t t-esc="doc.description_sale"/></td>
-                                <td><strong>Price: </strong> <t t-esc="doc.list_price"/></td>
-                                <td><strong>Cost Price: </strong> <t t-esc="doc.standard_price"/></td>
-                            </tr>
-                        </table>
+                        <div>
+                            <t t-if="doc.description_sale">
+                                <p><strong>Description: </strong> <t t-esc="doc.description_sale"/></p>
+                            </t>
+                            <t t-else="">
+                                <p><strong>Description: </strong>No description</p>
+                            </t>
+                            <p>
+                                <strong>Price: </strong> <t t-esc="doc.list_price"/>
+                                <t t-if="doc.list_price &lt; 9">
+                                Low product
+                                </t>
+                                <t t-elif="doc.list_price &lt; 19">
+                                    Middium product
+                                </t>
+                                <t t-else="">
+                                    High <product></product>
+                                </t>
+                            </p>
+                            <p><strong>Category: </strong> <t t-esc="doc.categ_id.name"/></p>
+                            <img t-att-src="'data:image/png;base64,' + doc.image_1920.decode('utf-8')"/>
+                        </div>
                     </div>
                 </t>
             </t>
