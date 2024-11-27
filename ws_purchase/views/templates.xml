@@ -1,0 +1,24 @@
+<odoo>
+    <data>
+        <template id="report_purchase_product">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <div>
+                        <h3>Purchase Report for <t t-esc="doc.product_id.name"/></h3>
+                        <p>Total Quantity Purchased: <t t-esc="doc.total_qty"/></p>
+                        <p>Total Cost: <t t-esc="doc.total_cost"/> USD</p>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+
+        <record id="action_purchase_order_report_pdf" model="ir.actions.report">
+            <field name="name">Purchase Order Report</field>
+            <field name="model">purchase.order.report.wizard</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">ws_purchase.report_purchase_order</field>
+            <field name="print_report_name">Purchase_Order_Report</field>
+        </record>
+    </data>
+</odoo>

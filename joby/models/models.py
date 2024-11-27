@@ -23,6 +23,23 @@ class ProductTemplate(models.Model):
         "queue.job", string="Job Queue", help="Job linked to this product"
     )
 
+    def generate_report_order(self):
+        for product in self:
+            data = {
+                "name": product.name,
+                "description_sale": product.description_sale,
+                "product_price": product.list_price,
+                "product_tax": product.taxes_id,
+            }
+
+            return {
+                "type": "ir.actions.report",
+                "report_name": "joby.report_product",
+                "report_type": "qweb-pdf",
+                "dates": data,
+                "context": {"product_id": product.id},
+            }
+
     def button_update_stuff(self):
         tax = self.tax_19()
         supplier = [(4, tax.id)]
