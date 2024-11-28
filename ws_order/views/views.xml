@@ -10,6 +10,10 @@
                   type="object"
                   string="Generate Report"
                   class="oe_highlight"/>
+          <button name="generate_sale_report_excel"
+                  type="object"
+                  string="Generate Report Excel"
+                  class="oe_highlight"/>
         </xpath>
       </field>
     </record>

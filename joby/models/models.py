@@ -23,6 +23,8 @@ class ProductTemplate(models.Model):
         "queue.job", string="Job Queue", help="Job linked to this product"
     )
 
+    isChecked = fields.Boolean(string="Is Checked", default=True)
+
     def generate_report_order(self):
         for product in self:
             data = {

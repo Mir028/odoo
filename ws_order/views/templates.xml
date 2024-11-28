@@ -20,7 +20,7 @@
                         <p><strong>Total Quantity: </strong> <t t-esc="sum(line.product_uom_qty for line in doc.order_line)"/> </p>
                         <p><strong>The largest product quantity: </strong>
                             <t t-set="biggest_product" t-value="max(doc.order_line, key=lambda line: line.product_uom_qty)"/>
-                            <t t-esc="biggest_product.product_id.name"/>
+                            <t t-esc="biggest_product.name"/>
                             (<t t-esc="biggest_product.product_uom_qty"/>)
                         </p>
 
