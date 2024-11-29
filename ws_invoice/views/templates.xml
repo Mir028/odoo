@@ -1,0 +1,14 @@
+<record id="email_template_overdue_reminder" model="mail.template">
+    <field name="name">Overdue Invoice Reminder</field>
+    <field name="model_id" ref="account.model_account_move"/>
+    <field name="email_from">${object.company_id.email}</field>
+    <field name="subject">Reminder: Invoice Overdue</field>
+    <field name="body_html">
+        <![CDATA[
+        <p>Dear ${object.partner_id.name},</p>
+        <p>This is a friendly reminder that the invoice <b>${object.name}</b> is overdue.</p>
+        <p>Please make the payment at your earliest convenience.</p>
+        <p>Thank you,<br/>${object.company_id.name}</p>
+        ]]>
+    </field>
+</record>

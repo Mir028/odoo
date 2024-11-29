@@ -9,9 +9,9 @@
                     <field name="isChecked" widget="boolean_toggle" options="{'terminology': 'check/uncheck'}" class="o_inline"/>
                 </div>
             </xpath>
-<!--            <xpath expr="field[@name='product_tag_ids']" position="inside">-->
-<!--                <button string="Export excel"/>-->
-<!--            </xpath>-->
+            <xpath expr="//search" position="inside">
+                <button string="Export excel"/>
+            </xpath>
         </field>
     </record>
 </odoo>
